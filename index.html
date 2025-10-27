@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DONARIUM - Organized Donations for Andhra Pradesh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .slide-in {
+            animation: slideIn 0.3s ease-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-green-50 min-h-screen">
+    <nav class="bg-white shadow-lg border-b-4 border-orange-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-blue-800"> 🏛️ DONARIUM</h1>
+                    <span class="ml-2 text-sm text-gray-600">Andhra Pradesh</span>
+                </div>
+                <div class="flex space-x-4">
+                    <button onclick="showSection('home')" class="nav-btn bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Home</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div id="home" class="section active">
+        <div class="max-w-6xl mx-auto px-4 py-12">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-5xl font-bold text-gray-800 mb-6">Welcome to DONARIUM</h2>
+                <p class="text-xl text-gray-600 max-w-4xl mx-auto mb-8">Organized charity platform for Andhra Pradesh.
+                Connect with verified government-recognized foundations across all districts with complete transparency and accountability.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
+                    <div class="text-6xl mb-4"> 👥 </div>
+                    <h3 class="text-2xl font-bold text-blue-800 mb-4">DONORS</h3>
+                    <p class="text-gray-600 mb-6">Make secure donations to verified foundations across Andhra Pradesh</p>
+                    <div class="space-y-3">
+                        <button onclick="showSection('donor-login')" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">Login as Donor</button>
+                        <button onclick="showSection('donor-register')" class="w-full bg-blue-100 text-blue-800 py-3 rounded-lg hover:bg-blue-200 transition-colors font-semibold">New User? Register</button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
+                    <div class="text-6xl mb-4"> 🏛️ </div>
+                    <h3 class="text-2xl font-bold text-green-800 mb-4">FOUNDATIONS</h3>
+                    <p class="text-gray-600 mb-6">39 verified foundations across all 13 districts of Andhra Pradesh</p>
+                    <div class="space-y-3">
+                        <button onclick="showSection('foundation-login')" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors font-semibold">Foundation Login</button>
+                        <button onclick="showFoundationsOverview()" class="w-full bg-green-100 text-green-800 py-3 rounded-lg hover:bg-green-200 transition-colors font-semibold">View All Foundations</button>
+                        <div class="text-sm text-gray-500 mt-2">Managed by Government</div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-8 text-center hover:shadow-xl transition-shadow">
+                    <div class="text-6xl mb-4"> ⚙️ </div>
+                    <h3 class="text-2xl font-bold text-red-800 mb-4">ADMIN</h3>
+                    <p class="text-gray-600 mb-6">Monitor all donations, verify foundations and manage the platform</p>
+                    <div class="space-y-3">
+                        <button onclick="showSection('admin-login')" class="w-full bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition-colors font-semibold">Admin Login</button>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Platform Features</h3>
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="text-3xl mb-2"> 🔒 </div>
+                        <h4 class="font-semibold text-gray-800">Secure Payments</h4>
+                        <p class="text-sm text-gray-600">All transactions are secure and tracked</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl mb-2"> ✅ </div>
+                        <h4 class="font-semibold text-gray-800">Verified Foundations</h4>
+                        <p class="text-sm text-gray-600">Government recognized organizations only</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl mb-2"> 📊 </div>
+                        <h4 class="font-semibold text-gray-800">Complete Transparency</h4>
+                        <p class="text-sm text-gray-600">Track every rupee donated</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl mb-2"> 📱 </div>
+                        <h4 class="font-semibold text-gray-800">Easy to Use</h4>
+                        <p class="text-sm text-gray-600">Simple interface for all users</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="donor-register" class="section hidden">
+        <div class="max-w-md mx-auto px-4 py-8">
+            <div class="bg-white rounded-xl shadow-lg p-8 fade-in">
+                <div class="text-center mb-6">
+                    <button onclick="showSection('home')" class="text-blue-600 hover:text-blue-800 mb-4">← Back to Home</button>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Donor Registration</h2>
+                    <p class="text-gray-600">Join DONARIUM to make a difference</p>
+                </div>
+                <form id="donorRegisterForm" onsubmit="handleDonorRegister(event)">
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Full Name</label>
+                        <input type="text" id="regName" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-colors">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Phone Number</label>
+                        <input type="tel" id="regPhone" required pattern="[0-9]{10}" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-colors">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
+                        <input type="email" id="regEmail" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-colors">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Create Password</label>
+                        <input type="password" id="regPassword" required minlength="6" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-colors">
+                    </div>
+                    <div class="mb-6 flex items-center">
+                        <input type="checkbox" id="regAnonymous" class="h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <label for="regAnonymous" class="ml-2 block text-sm text-gray-900">Register as Anonymous Donor</label>
+                        <p class="text-xs text-gray-500 ml-4">(Your name will not be shared with the foundation or administration)</p>
+                    </div>
+                    <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors font-semibold">Register & Pay ₹5 Initial Contribution</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="donor-login" class="section hidden">
+        <div class="max-w-md mx-auto px-4 py-8">
+            <div class="bg-white rounded-xl shadow-lg p-8 fade-in">
+                <div class="text-center mb-6">
+                    <button onclick="showSection('home')" class="text-blue-600 hover:text-blue-800 mb-4">← Back to Home</button>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Donor Login</h2>
+                    <p class="text-gray-600">Access your donation dashboard</p>
+                </div>
+                <form id="donorLoginForm" onsubmit="handleDonorLogin(event)">
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
+                        <input type="email" id="loginEmail" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-colors">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                        <input type="password" id="loginPassword" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 transition-colors">
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">Login to Dashboard</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="foundations-overview" class="section hidden">
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            <div class="bg-white rounded-xl shadow-lg p-8 fade-in">
+                <div class="text-center mb-8">
+                    <button onclick="showSection('home')" class="text-green-600 hover:text-green-800 mb-4">← Back to Home</button>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Government Verified Foundations</h2>
+                    <p class="text-gray-600">39 trusted foundations across all 13 districts of Andhra Pradesh</p>
+                </div>
+                <div class="mb-8">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Select District to View Foundations</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                        <button onclick="showFoundations('Anantapur')" class="district-btn bg-blue-100 hover:bg-blue-200 p-3 rounded-lg text-center transition-colors">
+                            <div class="font-semibold text-blue-800">Anantapur</div>
+                        </button>
+                        <button onclick="showFoundations('Chittoor')" class="district-btn bg-green-100 hover:bg-green-200 p-3 rounded-lg text-center transition-colors">
+                            <div class="font-semibold text-green-800">Chittoor</div>
+                        </button>
+                        <button onclick="showFoundations('East Godavari')" class="district-btn bg-purple-100 hover:bg-purple-200 p-3 rounded-lg text-center transition-colors">
+                            <div class="font-semibold text-purple-800">East Godavari</div>
+                        </button>
+                        <button onclick="showFoundations('Guntur')" class="district-btn bg-orange-100 hover:bg-orange-200 p-3 rounded-lg text-center transition-colors">
+                            <div class="font-semibold text-orange-800">Guntur</div>
+                        </button>
+                        <button onclick="showFoundations('Krishna')" class="district-btn bg-red-100 hover:bg-red-200 p-3 rounded-lg text-center transition-colors">
+                            <div class="font-semibold text-red-800">Krishna</div>
+                        </button>
+                        <button onclick="showFoundations('Kurnool')" class="district-btn bg-indigo-100 hover:bg-indigo-200 p-3 rounded-lg text-center transition-colors">
+                            <div class="font-semibold text-indigo-800">Kurnool</div>
+                        </button>
+                        <button onclick="showFoundations('Nellore')" class="district-btn bg-pink-100 hover:bg-pink-200 p-3 rounded-lg text-center transition-colors">
+                            <div class="font-semibold text-pink-800">Nellore</div>
+                        </button>
+                        <button onclick="showFoundations('Prakasam')" class="district-btn bg-yellow-100 hover:bg-yellow-200 p-3 rounded-lg text-center transition-colors">
+                            <div class="font-semibold text-yellow-800">Prakasam</div>
+                        </button>
+                        <button onclick="showFoundations('Srikakulam')" class="district-btn bg-teal-100 hover:bg-teal-200 p-3 rounded-lg text-center transition-colors">
+                            <div class="font-semibold text-teal-800">Srikakulam</div>
+                        </button>
+                        <button onclick="showFoundations('Visakhapatnam')" class="district-btn bg-cyan-100 hover:bg-cyan-200 p-3 rounded-lg text-center transition-colors">
+                            <div class="font-semibold text-cyan-800">Visakhapatnam</div>
+                        </button>
+                        <button onclick="showFoundations('Vizianagaram')" class="district-btn bg-lime-100 hover:bg-lime-200 p-3 rounded-lg text-center transition-colors">
+                            <div class="font-semibold text-lime-800">Vizianagaram</div>
+                        </button>
+                        <button onclick="showFoundations('West Godavari')" class="district-btn bg-emerald-100 hover:bg-emerald-200 p-3 rounded-lg text-center transition-colors">
+                            <div class="font-semibold text-emerald-800">West Godavari</div>
+                        </button>
+                        <button onclick="showFoundations('YSR Kadapa')" class="district-btn bg-rose-100 hover:bg-rose-200 p-3 rounded-lg text-center transition-colors">
+                            <div class="font-semibold text-rose-800">YSR Kadapa</div>
+                        </button>
+                    </div>
+                </div>
+                <div id="foundations-display" class="hidden">
+                    <h3 id="district-title" class="text-2xl font-bold text-gray-800 mb-6"></h3>
+                    <div id="foundations-grid" class="grid md:grid-cols-3 gap-6"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="foundation-login" class="section hidden">
+        <div class="max-w-md mx-auto px-4 py-8">
+            <div class="bg-white rounded-xl shadow-lg p-8 fade-in">
+                <div class="text-center mb-6">
+                    <button onclick="showSection('home')" class="text-green-600 hover:text-green-800 mb-4">← Back to Home</button>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Foundation Login</h2>
+                    <p class="text-gray-600">Access your foundation's financial dashboard</p>
+                </div>
+                <form id="foundationLoginForm" onsubmit="handleFoundationLogin(event)">
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Foundation Email</label>
+                        <input type="email" id="foundationLoginEmail" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition-colors">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                        <input type="password" id="foundationLoginPassword" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-green-500 transition-colors">
+                    </div>
+                    <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors font-semibold">Login to Dashboard</button>
+                </form>
+                <div class="mt-4 p-4 bg-gray-100 rounded-lg text-sm text-gray-600">
+                    <strong class="text-gray-800">Demo Foundation Account:</strong><br>
+                    <div class="mt-2">
+                        <div class="bg-white p-3 rounded border">
+                            <strong>Rural Development Trust Anantapur:</strong><br>
+                            Email: ruraldevelopmenttrustanantapur@anantapur.ap.gov.in<br>
+                            Password: password123
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="admin-login" class="section hidden">
+        <div class="max-w-md mx-auto px-4 py-8">
+            <div class="bg-white rounded-xl shadow-lg p-8 fade-in">
+                <div class="text-center mb-6">
+                    <button onclick="showSection('home')" class="text-red-600 hover:text-red-800 mb-4">← Back to Home</button>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2">Admin Login</h2>
+                    <p class="text-gray-600">Platform administration access</p>
+                </div>
+                <form id="adminLoginForm" onsubmit="handleAdminLogin(event)">
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Admin Email</label>
+                        <input type="email" id="adminLoginEmail" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500 transition-colors">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Admin Password</label>
+                        <input type="password" id="adminLoginPassword" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-red-500 transition-colors">
+                    </div>
+                    <button type="submit" class="w-full bg-red-600 text-white py-3 rounded-lg hover:bg-red-700 transition-colors font-semibold">Admin Login</button>
+                </form>
+                <div class="mt-4 p-4 bg-gray-100 rounded-lg text-sm text-gray-600">
+                    <strong class="text-gray-800">Demo Admin Account:</strong><br>
+                    <div class="mt-2">
+                        <div class="bg-white p-3 rounded border">
+                            <strong>System Administrator:</strong><br>
+                            Email: admin@donarium.ap.gov.in<br>
+                            Password: admin123
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="donor-dashboard" class="section hidden">
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            <div class="bg-white rounded-xl shadow-lg p-8 fade-in">
+                <div class="flex justify-between items-center mb-8">
+                    <h2 class="text-3xl font-bold text-gray-800">Welcome, <span id="userName"></span>!</h2>
+                    <button onclick="logout()" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors">Logout</button>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-blue-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-blue-800 mb-4">Make a Donation</h3>
+                        <form id="donationForm" onsubmit="handleDonation(event)">
+                            <div class="mb-4">
+                                <label class="block text-gray-700 text-sm font-bold mb-2">Select District</label>
+                                <select id="donationDistrict" required onchange="updateFoundationsByDistrict()" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                                    <option value="">Choose a district...</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-gray-700 text-sm font-bold mb-2">Select Foundation</label>
+                                <select id="donationFoundation" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" disabled>
+                                    <option value="">First select a district...</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-gray-700 text-sm font-bold mb-2">Donation Amount (₹)</label>
+                                <input type="number" id="donationAmount" required min="10" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                            </div>
+                            <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors font-semibold">Donate Now</button>
+                        </form>
+                    </div>
+
+                    <div class="bg-green-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-green-800 mb-4">Your Donation History</h3>
+                        <div id="donationHistory" class="space-y-3 max-h-64 overflow-y-auto">
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="foundation-dashboard" class="section hidden">
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            <div class="bg-white rounded-xl shadow-lg p-8 fade-in">
+                <div class="flex justify-between items-center mb-8">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-800">Foundation Dashboard</h2>
+                        <p class="text-gray-600 mt-1">Welcome, <span id="foundationNameDisplay" class="font-semibold text-green-700"></span></p>
+                    </div>
+                    <button onclick="logout()" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors">Logout</button>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-green-50 p-6 rounded-lg text-center">
+                        <h3 class="text-lg font-bold text-green-800">Total Donations Received</h3>
+                        <p id="foundationTotalDonations" class="text-3xl font-bold text-green-600 mt-2">₹0</p>
+                    </div>
+                    <div class="bg-blue-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-blue-800 mb-4">Upload Expenditure Proof</h3>
+                        <form id="expenditureProofForm" onsubmit="handleExpenditureProofUpload(event)">
+                            <div class="mb-4">
+                                <label class="block text-gray-700 text-sm font-bold mb-2">Expenditure Description/Purpose</label>
+                                <input type="text" id="expenditureDescription" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-gray-700 text-sm font-bold mb-2">Amount Spent (₹)</label>
+                                <input type="number" id="expenditureAmount" required min="1" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-gray-700 text-sm font-bold mb-2">Bill/Receipt URL (Simulated File Upload)</label>
+                                <input type="text" id="expenditureBillUrl" required placeholder="e.g., http://linkto.bill/123.jpg" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-gray-700 text-sm font-bold mb-2">Photo Proof URL (Simulated File Upload)</label>
+                                <input type="text" id="expenditurePhotoUrl" required placeholder="e.g., http://linkto.photo/456.jpg" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                            </div>
+                            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">Submit Proof for Admin Verification</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-lg mb-8">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Submitted Expenditure Proofs</h3>
+                    <div id="foundationExpenditureProofs" class="space-y-4">
+                         <p class="text-center text-gray-500 py-4" id="foundationExpenditureEmpty">No expenditure proofs submitted yet.</p>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4">Recent Donations Received (Donor Names visible unless anonymous)</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full bg-white rounded-lg shadow">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="px-4 py-3 text-left font-semibold">Date</th>
+                                    <th class="px-4 py-3 text-left font-semibold">Donor Name</th>
+                                    <th class="px-4 py-3 text-left font-semibold">Amount</th>
+                                    <th class="px-4 py-3 text-left font-semibold">Donor Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="foundationDonationHistoryTableBody">
+                                <tr><td colspan="4" class="text-center py-4 text-gray-500">Loading donations...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="admin" class="section hidden">
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            <div class="bg-white rounded-xl shadow-lg p-8 fade-in">
+                <div class="flex justify-between items-center mb-8">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-800">Admin Dashboard</h2>
+                        <p class="text-gray-600 mt-1">Welcome, <span id="adminName" class="font-semibold"></span></p>
+                    </div>
+                    <button onclick="logout()" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors">Logout</button>
+                </div>
+
+                <div class="grid md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-blue-50 p-6 rounded-lg text-center">
+                        <h3 class="text-lg font-bold text-blue-800">Total Donors</h3>
+                        <p id="totalDonors" class="text-3xl font-bold text-blue-600 mt-2">0</p>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-lg text-center">
+                        <h3 class="text-lg font-bold text-green-800">Total Donations</h3>
+                        <p id="totalDonations" class="text-3xl font-bold text-green-600 mt-2">₹0</p>
+                    </div>
+                    <div class="bg-purple-50 p-6 rounded-lg text-center">
+                        <h3 class="text-lg font-bold text-purple-800">Active Foundations</h3>
+                        <p id="totalFoundations" class="text-3xl font-bold text-purple-600 mt-2">39</p>
+                    </div>
+                    <div class="bg-orange-50 p-6 rounded-lg text-center">
+                        <h3 class="text-lg font-bold text-orange-800">Total Transactions</h3>
+                        <p id="totalTransactions" class="text-3xl font-bold text-orange-600 mt-2">0</p>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <div class="flex space-x-4 border-b">
+                        <button onclick="showAdminTab('users')" id="usersTab" class="admin-tab px-4 py-2 font-semibold text-blue-600 border-b-2 border-blue-600">User Database</button>
+                        <button onclick="showAdminTab('transactions')" id="transactionsTab" class="admin-tab px-4 py-2 font-semibold text-gray-600 hover:text-blue-600">All Transactions</button>
+                        <button onclick="showAdminTab('expenditure')" id="expenditureTab" class="admin-tab px-4 py-2 font-semibold text-gray-600 hover:text-blue-600">Expenditure Proofs</button>
+                        <button onclick="showAdminTab('foundations')" id="foundationsTab" class="admin-tab px-4 py-2 font-semibold text-gray-600 hover:text-blue-600">Foundation Management</button>
+                    </div>
+                </div>
+                <div id="usersTabContent" class="admin-tab-content">
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Complete User Database</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full bg-white rounded-lg shadow">
+                                <thead class="bg-gray-100">
+                                    <tr>
+                                        <th class="px-4 py-3 text-left font-semibold">Name</th>
+                                        <th class="px-4 py-3 text-left font-semibold">Email</th>
+                                        <th class="px-4 py-3 text-left font-semibold">Phone</th>
+                                        <th class="px-4 py-3 text-left font-semibold">Anonymous</th>
+                                        <th class="px-4 py-3 text-left font-semibold">Registration Date</th>
+                                        <th class="px-4 py-3 text-left font-semibold">Initial Payment ID</th>
+                                        <th class="px-4 py-3 text-left font-semibold">Payment Time</th>
+                                        <th class="px-4 py-3 text-left font-semibold">Total Donated</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="usersTableBody">
+                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="transactionsTabContent" class="admin-tab-content hidden">
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">All Transaction Records</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full bg-white rounded-lg shadow">
+                                <thead class="bg-gray-100">
+                                    <tr>
+                                        <th class="px-4 py-3 text-left font-semibold">Date</th>
+                                        <th class="px-4 py-3 text-left font-semibold">Donor</th>
+                                        <th class="px-4 py-3 text-left font-semibold">Foundation</th>
+                                        <th class="px-4 py-3 text-left font-semibold">Amount</th>
+                                        <th class="px-4 py-3 text-left font-semibold">Type</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="transactionsTableBody">
+                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="expenditureTabContent" class="admin-tab-content hidden">
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <div class="mb-6">
+                            <h3 class="text-xl font-bold text-gray-800 mb-4">Expenditure Proofs Verification</h3>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Select District:</label>
+                                    <select id="expenditureDistrictFilter" onchange="updateFoundationsForExpenditure()" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                                        <option value="">Choose a district...</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">Select Foundation:</label>
+                                    <select id="expenditureFoundationFilter" onchange="filterExpenditureProofs()" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500" disabled>
+                                        <option value="">First select a district...</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="expenditureProofsContainer" class="space-y-4">
+                            <div class="text-center py-12 text-gray-500" id="expenditureProofsEmptyMessage">
+                                <div class="text-4xl mb-4"> 📋 </div>
+                                <h4 class="text-lg font-semibold mb-2">No Expenditure Proofs Yet</h4>
+                                <p>Select a district and foundation to view submitted expenditure proofs.</p>
+                                <p class="text-sm mt-2">Foundations will submit bills and photos for verification here.</p>
+                            </div>
+                            <div id="expenditureProofsTableWrapper" class="overflow-x-auto hidden">
+                                <table class="w-full bg-white rounded-lg shadow">
+                                    <thead class="bg-gray-100">
+                                        <tr>
+                                            <th class="px-4 py-3 text-left font-semibold">Foundation</th>
+                                            <th class="px-4 py-3 text-left font-semibold">Description</th>
+                                            <th class="px-4 py-3 text-left font-semibold">Amount</th>
+                                            <th class="px-4 py-3 text-left font-semibold">Date Submitted</th>
+                                            <th class="px-4 py-3 text-left font-semibold">Proofs (Links)</th>
+                                            <th class="px-4 py-3 text-left font-semibold">Status</th>
+                                            <th class="px-4 py-3 text-left font-semibold">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="expenditureProofsTableBody">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="foundationsTabContent" class="admin-tab-content hidden">
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Foundation Management</h3>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div id="foundationsList">
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="paymentModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+        <div class="bg-white rounded-xl p-8 max-w-md w-full mx-4 fade-in">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Complete Payment</h3>
+            <div class="text-center mb-6">
+                <p class="text-lg text-gray-600">Amount: <span id="paymentAmount" class="font-bold text-green-600"></span></p>
+                <p class="text-sm text-gray-500 mt-2">This is a demo payment interface</p>
+            </div>
+            <div class="space-y-4">
+                <button onclick="processPayment()" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors font-semibold">Pay with UPI</button>
+                <button onclick="processPayment()" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">Pay with Card</button>
+                <button onclick="closePaymentModal()" class="w-full bg-gray-400 text-white py-3 rounded-lg hover:bg-gray-500 transition-colors">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+        <div class="bg-white rounded-xl p-8 max-w-md w-full mx-4 fade-in">
+            <div class="text-center">
+                <div class="text-6xl text-green-500 mb-4"> ✅ </div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-4">Payment Successful!</h3>
+                <div class="bg-gray-50 p-4 rounded-lg mb-6 text-left">
+                    <h4 class="font-bold text-gray-800 mb-2">Payment Details:</h4>
+                    <p class="text-sm text-gray-600 mb-1"><strong>Transaction ID:</strong> <span id="transactionId"></span></p>
+                    <p class="text-sm text-gray-600 mb-1"><strong>Amount:</strong> <span id="successAmount"></span></p>
+                    <p class="text-sm text-gray-600 mb-1"><strong>Foundation:</strong> <span id="successFoundation"></span></p>
+                    <p class="text-sm text-gray-600 mb-1"><strong>Date:</strong> <span id="successDate"></span></p>
+                    <p class="text-sm text-gray-600"><strong>Status:</strong> <span class="text-green-600 font-semibold">Completed</span></p>
+                </div>
+                <p class="text-gray-600 mb-6">Thank you for your generous donation!
+                Your contribution will make a real difference.</p>
+                <button onclick="closeSuccessModal()" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // All districts of Andhra Pradesh
+        const apDistricts = [
+            'Anantapur', 'Chittoor', 'East Godavari', 'Guntur', 'Krishna', 'Kurnool', 'Nellore',
+            'Prakasam', 'Srikakulam', 'Visakhapatnam', 'Vizianagaram', 'West Godavari', 'YSR Kadapa'
+        ];
+        // Sample data with all districts
+        const foundationsData = {
+            'Anantapur': [{
+                name: 'Rural Development Trust Anantapur',
+                focus: 'Rural Development',
+                regNo: 'AP/ATP/001',
+                contact: '9876543201'
+            }, {
+                name: 'Akshaya Patra Anantapur',
+                focus: 'Child Nutrition',
+                regNo: 'AP/ATP/002',
+                contact: '9876543202'
+            }, {
+                name: 'Smile Foundation Anantapur',
+                focus: 'Education',
+                regNo: 'AP/ATP/003',
+                contact: '9876543203'
+            }],
+            'Chittoor': [{
+                name: 'Tirumala Trust Chittoor',
+                focus: 'Healthcare',
+                regNo: 'AP/CTR/001',
+                contact: '9876543204'
+            }, {
+                name: 'CRY Chittoor Chapter',
+                focus: 'Child Rights',
+                regNo: 'AP/CTR/002',
+                contact: '9876543205'
+            }, {
+                name: 'Goonj Chittoor',
+                focus: 'Rural Development',
+                regNo: 'AP/CTR/003',
+                contact: '9876543206'
+            }],
+            'East Godavari': [{
+                name: 'Helpage India East Godavari',
+                focus: 'Elder Care',
+                regNo: 'AP/EGD/001',
+                contact: '9876543207'
+            }, {
+                name: 'Pratham East Godavari',
+                focus: 'Education',
+                regNo: 'AP/EGD/002',
+                contact: '9876543208'
+            }, {
+                name: 'Sankara Eye Foundation EG',
+                focus: 'Eye Care',
+                regNo: 'AP/EGD/003',
+                contact: '9876543209'
+            }],
+            'Guntur': [{
+                name: 'Pratham Guntur',
+                focus: 'Child Education',
+                regNo: 'AP/GNT/001',
+                contact: '9876543216'
+            }, {
+                name: 'Sankara Eye Foundation Guntur',
+                focus: 'Eye Care',
+                regNo: 'AP/GNT/002',
+                contact: '9876543217'
+            }, {
+                name: 'Bhumi Guntur',
+                focus: 'Environment & Education',
+                regNo: 'AP/GNT/003',
+                contact: '9876543218'
+            }],
+            'Krishna': [{
+                name: 'Helpage India Krishna',
+                focus: 'Elder Care',
+                regNo: 'AP/KRS/001',
+                contact: '9876543213'
+            }, {
+                name: 'Teach for India Krishna',
+                focus: 'Education',
+                regNo: 'AP/KRS/002',
+                contact: '9876543214'
+            }, {
+                name: 'Goonj Krishna',
+                focus: 'Rural Development',
+                regNo: 'AP/KRS/003',
+                contact: '9876543215'
+            }],
+            'Kurnool': [{
+                name: 'Naandi Foundation Kurnool',
+                focus: 'Child Nutrition',
+                regNo: 'AP/KNL/001',
+                contact: '9876543222'
+            }, {
+                name: 'Sphoorti Foundation Kurnool',
+                focus: 'Child Welfare',
+                regNo: 'AP/KNL/002',
+                contact: '9876543223'
+            }, {
+                name: 'Udaan Kurnool',
+                focus: 'Disability Support',
+                regNo: 'AP/KNL/003',
+                contact: '9876543224'
+            }],
+            'Nellore': [{
+                name: 'Asha for Education Nellore',
+                focus: 'Rural Education',
+                regNo: 'AP/NLR/001',
+                contact: '9876543219'
+            }, {
+                name: 'Rotary Club Nellore Charity',
+                focus: 'Community Service',
+                regNo: 'AP/NLR/002',
+                contact: '9876543220'
+            }, {
+                name: 'Lions Club Nellore Foundation',
+                focus: 'Healthcare',
+                regNo: 'AP/NLR/003',
+                contact: '9876543221'
+            }],
+            'Prakasam': [{
+                name: 'Akshaya Patra Prakasam',
+                focus: 'Child Nutrition',
+                regNo: 'AP/PKS/001',
+                contact: '9876543228'
+            }, {
+                name: 'CRY Prakasam Chapter',
+                focus: 'Child Rights',
+                regNo: 'AP/PKS/002',
+                contact: '9876543229'
+            }, {
+                name: 'Smile Foundation Prakasam',
+                focus: 'Education',
+                regNo: 'AP/PKS/003',
+                contact: '9876543230'
+            }],
+            'Srikakulam': [{
+                name: 'Pratham Srikakulam',
+                focus: 'Education',
+                regNo: 'AP/SKL/001',
+                contact: '9876543231'
+            }, {
+                name: 'Helpage India Srikakulam',
+                focus: 'Elder Care',
+                regNo: 'AP/SKL/002',
+                contact: '9876543232'
+            }, {
+                name: 'Goonj Srikakulam',
+                focus: 'Rural Development',
+                regNo: 'AP/SKL/003',
+                contact: '9876543233'
+            }],
+            'Visakhapatnam': [{
+                name: 'Akshaya Patra Foundation Vizag',
+                focus: 'Child Nutrition',
+                regNo: 'AP/VZG/001',
+                contact: '9876543210'
+            }, {
+                name: 'Smile Foundation Visakhapatnam',
+                focus: 'Education & Healthcare',
+                regNo: 'AP/VZG/002',
+                contact: '9876543211'
+            }, {
+                name: 'CRY Visakhapatnam Chapter',
+                focus: 'Child Rights',
+                regNo: 'AP/VZG/003',
+                contact: '9876543212'
+            }],
+            'Vizianagaram': [{
+                name: 'Sankara Eye Foundation Vizianagaram',
+                focus: 'Eye Care',
+                regNo: 'AP/VZN/001',
+                contact: '9876543234'
+            }, {
+                name: 'Bhumi Vizianagaram',
+                focus: 'Environment',
+                regNo: 'AP/VZN/002',
+                contact: '9876543235'
+            }, {
+                name: 'Teach for India Vizianagaram',
+                focus: 'Education',
+                regNo: 'AP/VZN/003',
+                contact: '9876543236'
+            }],
+            'West Godavari': [{
+                name: 'Naandi Foundation West Godavari',
+                focus: 'Child Nutrition',
+                regNo: 'AP/WGD/001',
+                contact: '9876543237'
+            }, {
+                name: 'Udaan West Godavari',
+                focus: 'Disability Support',
+                regNo: 'AP/WGD/002',
+                contact: '9876543238'
+            }, {
+                name: 'Lions Club West Godavari',
+                focus: 'Healthcare',
+                regNo: 'AP/WGD/003',
+                contact: '9876543239'
+            }],
+            'YSR Kadapa': [{
+                name: 'TTD Annadanam Kadapa',
+                focus: 'Food Distribution',
+                regNo: 'AP/KDP/001',
+                contact: '9876543225'
+            }, {
+                name: 'ISKCON Kadapa Seva',
+                focus: 'Spiritual & Social Service',
+                regNo: 'AP/KDP/002',
+                contact: '9876543226'
+            }, {
+                name: 'Tirumala Charitable Trust Kadapa',
+                focus: 'Healthcare & Education',
+                regNo: 'AP/KDP/003',
+                contact: '9876543227'
+            }]
+        };
+
+        // NEW: Foundation Credentials and Mapping
+        let foundationsCredentials = {};
+        let foundationsMap = {};
+
+        function initializeFoundationData() {
+            let count = 0;
+            for (const district in foundationsData) {
+                foundationsData[district].forEach((foundation) => {
+                    count++;
+                    const foundationId = `FND${count}`;
+                    const simpleName = foundation.name.replace(/[^a-zA-Z0-9]/g, '').toLowerCase().substring(0, 35);
+                    const districtName = district.replace(/\s/g, '').toLowerCase();
+                    const email = `${simpleName}@${districtName}.ap.gov.in`;
+
+                    // Store credentials for login (password123 for all demo foundations)
+                    foundationsCredentials[email] = {
+                        id: foundationId,
+                        name: foundation.name,
+                        district: district,
+                        password: 'password123',
+                        email: email
+                    };
+                    // Map the foundation name to the credentials object for easy lookup in donation/expenditure tracking
+                    foundationsMap[foundation.name] = foundationsCredentials[email];
+                });
+            }
+        }
+        
+        // Helper function to get all foundation names
+        function getAllFoundationNames() {
+            return Object.keys(foundationsMap);
+        }
+
+        let currentUser = null;
+        let currentUserType = null; // 'donor', 'admin', 'foundation'
+        let users = JSON.parse(localStorage.getItem('donariumUsers') || '[]');
+        let donations = JSON.parse(localStorage.getItem('donariumDonations') || '[]');
+        let expenditureProofs = JSON.parse(localStorage.getItem('donariumExpenditureProofs') || '[]');
+
+        function showSection(sectionName) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.add('hidden');
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionName).classList.remove('hidden');
+            document.getElementById(sectionName).classList.add('active');
+
+            if (sectionName === 'admin') {
+                updateAdminDashboard();
+            } else if (sectionName === 'donor-dashboard') {
+                updateDonorDashboard();
+            } else if (sectionName === 'foundation-dashboard') {
+                updateFoundationDashboard();
+            }
+        }
+
+        function showFoundationsOverview() {
+            showSection('foundations-overview');
+        }
+
+        function showAdminTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.admin-tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            // Remove active styling from all tabs
+            document.querySelectorAll('.admin-tab').forEach(tab => {
+                tab.classList.remove('text-blue-600', 'border-b-2', 'border-blue-600');
+                tab.classList.add('text-gray-600');
+            });
+
+            // Show selected tab content
+            document.getElementById(tabName + 'TabContent').classList.remove('hidden');
+            // Add active styling to selected tab
+            const activeTab = document.getElementById(tabName + 'Tab');
+            activeTab.classList.remove('text-gray-600');
+            activeTab.classList.add('text-blue-600', 'border-b-2', 'border-blue-600');
+
+            // Update content based on tab
+            if (tabName === 'users') {
+                updateUsersTable();
+            } else if (tabName === 'transactions') {
+                updateTransactionsTable();
+            } else if (tabName === 'expenditure') {
+                // NEW: Populate district filter and display proofs
+                populateDistrictFilter('expenditureDistrictFilter');
+                updateFoundationsForExpenditure(); // Ensure foundation filter updates based on district
+                filterExpenditureProofs(); 
+            } else if (tabName === 'foundations') {
+                updateFoundationsList();
+            }
+        }
+
+        function populateDistrictFilter(filterId) {
+            const select = document.getElementById(filterId);
+            const currentValue = select.value;
+            select.innerHTML = '<option value="">Choose a district...</option>';
+            apDistricts.forEach(district => {
+                const option = document.createElement('option');
+                option.value = district;
+                option.textContent = district;
+                if (district === currentValue) {
+                    option.selected = true;
+                }
+                select.appendChild(option);
+            });
+        }
+        
+        // Donation/Expenditure function stubs (existing logic retained for context)
+        // ... (showFoundations, updateFoundationsByDistrict, handleDonation, etc.)
+
+        function showFoundations(district) {
+            const foundations = foundationsData[district];
+            const display = document.getElementById('foundations-display');
+            const title = document.getElementById('district-title');
+            const grid = document.getElementById('foundations-grid');
+            title.textContent = `Government Recognized Foundations in ${district}`;
+            grid.innerHTML = '';
+            foundations.forEach(foundation => {
+                const card = document.createElement('div');
+                card.className = 'bg-gradient-to-br from-blue-50 to-green-50 p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow';
+                card.innerHTML = `
+                    <h4 class="text-lg font-bold text-gray-800 mb-2">${foundation.name}</h4>
+                    <p class="text-gray-600 mb-2"><strong>Focus:</strong> ${foundation.focus}</p>
+                    <p class="text-gray-600 mb-2"><strong>Reg No:</strong> ${foundation.regNo}</p>
+                    <p class="text-gray-600 mb-4"><strong>Contact:</strong> ${foundation.contact}</p>
+                    <div class="flex items-center text-green-600">
+                        <span class="w-3 h-3 bg-green-500 rounded-full mr-2"></span>
+                        <span class="text-sm font-semibold">Government Verified</span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            display.classList.remove('hidden');
+            display.scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+        
+        // ... (updateFoundationsByDistrict, handleDonation, processPayment, updateDonorDashboard, updateDonationHistory, handleDonorLogin, handleAdminLogin, updateAdminDashboard, updateTransactionsTable, updateFoundationsList)
+
+        function updateFoundationsByDistrict() {
+            const districtSelect = document.getElementById('donationDistrict');
+            const foundationSelect = document.getElementById('donationFoundation');
+            const selectedDistrict = districtSelect.value;
+
+            foundationSelect.innerHTML = '<option value="">Select a foundation...</option>';
+            if (selectedDistrict) {
+                foundationSelect.disabled = false;
+                const foundations = foundationsData[selectedDistrict];
+                foundations.forEach(foundation => {
+                    const option = document.createElement('option');
+                    option.value = foundation.name;
+                    option.textContent = foundation.name;
+                    foundationSelect.appendChild(option);
+                });
+            } else {
+                foundationSelect.disabled = true;
+                foundationSelect.innerHTML = '<option value="">First select a district...</option>';
+            }
+        }
+
+        function handleDonation(event) {
+            event.preventDefault();
+
+            const foundationName = document.getElementById('donationFoundation').value;
+            const amount = parseInt(document.getElementById('donationAmount').value);
+            const donor = users.find(u => u.email === currentUser.email);
+
+            if (!donor) {
+                alert('Error: Donor not found. Please log in again.');
+                return;
+            }
+
+            // Store transaction data temporarily for modal
+            window.tempDonationDetails = {
+                foundation: foundationName,
+                amount: amount,
+                donor: donor,
+                type: 'Donation'
+            };
+
+            document.getElementById('paymentAmount').textContent = `₹${amount.toLocaleString('en-IN')}`;
+            document.getElementById('paymentModal').classList.remove('hidden');
+        }
+
+        function processPayment() {
+            const {
+                foundation,
+                amount,
+                donor,
+                type
+            } = window.tempDonationDetails;
+
+            const transactionId = 'TXN-' + Math.random().toString(36).substr(2, 9).toUpperCase();
+            const date = new Date().toISOString().split('T')[0];
+            const time = new Date().toLocaleTimeString('en-US');
+            const datetime = new Date().toLocaleString();
+
+            // 1. Record Donation
+            donations.push({
+                donorId: donor.id,
+                donorName: donor.name,
+                foundation: foundation,
+                amount: amount,
+                type: type,
+                date: date,
+                isAnonymous: donor.isAnonymous // NEW: Record anonymous status in donation
+            });
+            localStorage.setItem('donariumDonations', JSON.stringify(donations));
+
+            // 2. Update Donor's Total Donated
+            donor.totalDonated += amount;
+            localStorage.setItem('donariumUsers', JSON.stringify(users));
+            
+            // 3. NEW: Send appreciation email
+            sendAppreciationEmail(donor, foundation, amount, transactionId, datetime);
+
+            // 4. Update Success Modal
+            document.getElementById('transactionId').textContent = transactionId;
+            document.getElementById('successAmount').textContent = `₹${amount.toLocaleString('en-IN')}`;
+            document.getElementById('successFoundation').textContent = foundation;
+            document.getElementById('successDate').textContent = `${date} at ${time}`;
+
+            // 5. Show Success Modal
+            closePaymentModal();
+            document.getElementById('successModal').classList.remove('hidden');
+
+            // 6. Update Dashboard
+            updateDonorDashboard();
+            document.getElementById('donationForm').reset();
+        }
+
+        /**
+         * NEW FEATURE: Simulate sending an appreciation email to the donor.
+         */
+        function sendAppreciationEmail(donor, foundation, amount, transactionId, datetime) {
+            const donorName = donor.isAnonymous ? 'Generous Donor' : donor.name;
+            const emailContent = `
+                Subject: Your Donation to DONARIUM is Complete!
+
+                Dear ${donorName},
+
+                Thank you so much for your generous donation of ₹${amount.toLocaleString('en-IN')}! Your contribution is vital in supporting the government-verified foundations of Andhra Pradesh.
+
+                Here are your transaction details:
+                - Foundation: ${foundation}
+                - Amount: ₹${amount.toLocaleString('en-IN')}
+                - Transaction ID: ${transactionId}
+                - Date & Time: ${datetime}
+
+                With complete transparency, you can be assured that every rupee is accounted for and utilized for the intended cause.
+
+                Thank you once again for making a difference.
+
+                Warm regards,
+                The DONARIUM Team
+            `;
+
+            console.log(`--- SIMULATED APPRECIATION EMAIL ---`);
+            console.log(`To: ${donor.email}`);
+            console.log(emailContent);
+            console.log(`------------------------------------`);
+            
+            // In a real application, an AJAX call to a backend service would be made here.
+            // For this demo, we use console.log.
+        }
+
+        function closePaymentModal() {
+            document.getElementById('paymentModal').classList.add('hidden');
+            window.tempDonationDetails = null;
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('successModal').classList.add('hidden');
+        }
+
+
+        function updateDonorDashboard() {
+            if (currentUserType !== 'donor' || !currentUser) return;
+
+            const donor = users.find(u => u.email === currentUser.email);
+            if (!donor) return;
+
+            document.getElementById('userName').textContent = donor.name;
+            updateDonationHistory(donor.id);
+            populateDistrictFilter('donationDistrict'); // Refresh district list
+        }
+
+        function updateDonationHistory(donorId) {
+            const historyContainer = document.getElementById('donationHistory');
+            historyContainer.innerHTML = '';
+            const donorDonations = donations.filter(d => d.donorId === donorId).reverse(); // Show recent first
+
+            if (donorDonations.length === 0) {
+                historyContainer.innerHTML = '<p class="text-center text-gray-500 py-4">You have not made any donations yet.</p>';
+                return;
+            }
+
+            donorDonations.forEach(d => {
+                const donationCard = document.createElement('div');
+                donationCard.className = 'p-4 border border-gray-200 rounded-lg bg-white shadow-sm';
+                donationCard.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <p class="font-bold text-lg text-green-700">₹${d.amount.toLocaleString('en-IN')}</p>
+                        <span class="text-xs text-gray-500">${d.date}</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-1">Donated to: <span class="font-semibold">${d.foundation}</span></p>
+                    <p class="text-xs text-gray-500 mt-1">Type: ${d.type}</p>
+                `;
+                historyContainer.appendChild(donationCard);
+            });
+        }
+
+        /**
+         * MODIFIED: This function now randomly assigns the ₹5 initial contribution to one of the 39 foundations.
+         */
+        function handleDonorRegister(event) {
+            event.preventDefault();
+            const name = document.getElementById('regName').value;
+            const phone = document.getElementById('regPhone').value;
+            const email = document.getElementById('regEmail').value;
+            const password = document.getElementById('regPassword').value;
+            const isAnonymous = document.getElementById('regAnonymous').checked;
+
+            if (users.find(u => u.email === email)) {
+                alert('Registration failed: A user with this email already exists.');
+                return;
+            }
+
+            // --- MODIFICATION START ---
+            const allFoundationNames = getAllFoundationNames();
+            // 1. Select a random foundation
+            const randomIndex = Math.floor(Math.random() * allFoundationNames.length);
+            const randomFoundation = allFoundationNames[randomIndex];
+            // --- MODIFICATION END ---
+
+            // Simulate payment processing for initial contribution
+            const paymentDetails = {
+                id: 'INIT-' + Math.random().toString(36).substr(2, 9).toUpperCase(),
+                amount: 5,
+                // MODIFIED: Assign to the random foundation
+                foundation: randomFoundation, 
+                date: new Date().toISOString().split('T')[0],
+                time: new Date().toLocaleTimeString('en-US'),
+                isAnonymous: isAnonymous
+            };
+
+            // Add new user to the system
+            const newUser = {
+                id: users.length + 1,
+                name: name,
+                phone: phone,
+                email: email,
+                password: password,
+                isAnonymous: isAnonymous, 
+                totalDonated: 0,
+                registrationDate: paymentDetails.date,
+                initialPaymentId: paymentDetails.id,
+                initialPaymentTime: paymentDetails.time
+            };
+            users.push(newUser);
+            localStorage.setItem('donariumUsers', JSON.stringify(users));
+
+            // Add initial contribution to transactions/donations list
+            donations.push({
+                donorId: newUser.id,
+                donorName: name,
+                // MODIFIED: Use the random foundation name
+                foundation: paymentDetails.foundation,
+                amount: paymentDetails.amount,
+                type: 'Initial Contribution (Registration Fee)',
+                date: paymentDetails.date,
+                isAnonymous: isAnonymous
+            });
+            localStorage.setItem('donariumDonations', JSON.stringify(donations));
+
+            alert(`Registration successful for ${name}. Initial payment of ₹5 processed and donated to ${randomFoundation}!`);
+            showSection('donor-login');
+            document.getElementById('donorRegisterForm').reset();
+        }
+
+        function handleDonorLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            const user = users.find(u => u.email === email && u.password === password);
+
+            if (user) {
+                currentUser = user;
+                currentUserType = 'donor';
+                showSection('donor-dashboard');
+            } else {
+                alert('Login Failed: Invalid email or password.');
+            }
+        }
+
+        function handleAdminLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('adminLoginEmail').value;
+            const password = document.getElementById('adminLoginPassword').value;
+
+            if (email === 'admin@donarium.ap.gov.in' && password === 'admin123') {
+                currentUser = {
+                    name: 'System Administrator'
+                };
+                currentUserType = 'admin';
+                document.getElementById('adminName').textContent = currentUser.name;
+                showSection('admin');
+                showAdminTab('users'); // Default to Users tab
+            } else {
+                alert('Admin Login Failed: Invalid credentials.');
+            }
+        }
+
+        // NEW: Foundation Login Logic
+        function handleFoundationLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('foundationLoginEmail').value;
+            const password = document.getElementById('foundationLoginPassword').value;
+
+            const foundation = foundationsCredentials[email];
+
+            if (foundation && foundation.password === password) {
+                currentUser = foundation;
+                currentUserType = 'foundation';
+                document.getElementById('foundationNameDisplay').textContent = foundation.name;
+                showSection('foundation-dashboard');
+            } else {
+                alert('Login Failed: Invalid email or password for Foundation.');
+            }
+        }
+
+        // MODIFIED: Foundation Dashboard Logic
+        function updateFoundationDashboard() {
+            if (currentUserType !== 'foundation' || !currentUser) return;
+
+            const foundationDonations = donations.filter(d => d.foundation === currentUser.name);
+            const foundationProofs = expenditureProofs.filter(p => p.foundationName === currentUser.name).reverse();
+
+            // 1. Calculate Total Donations
+            const totalAmount = foundationDonations.reduce((sum, d) => sum + d.amount, 0);
+            document.getElementById('foundationTotalDonations').textContent = `₹${totalAmount.toLocaleString('en-IN')}`;
+
+            // 2. Populate Expenditure Proofs
+            const proofsContainer = document.getElementById('foundationExpenditureProofs');
+            const emptyMessage = document.getElementById('foundationExpenditureEmpty');
+            proofsContainer.innerHTML = '';
+            proofsContainer.appendChild(emptyMessage);
+            
+            if (foundationProofs.length > 0) {
+                 emptyMessage.classList.add('hidden');
+                 
+                 foundationProofs.forEach(p => {
+                    let statusClass = 'bg-yellow-100 text-yellow-800';
+                    let statusText = p.status;
+                    let rejectionDetails = '';
+                    let resubmitButton = '';
+                    let fieldsDisabled = false;
+
+                    if (p.status === 'Approved') {
+                        statusClass = 'bg-green-100 text-green-800';
+                        fieldsDisabled = true;
+                    } else if (p.status.startsWith('Rejected')) {
+                        statusClass = 'bg-red-100 text-red-800';
+                        rejectionDetails = `<p class="text-sm text-red-600 font-semibold mt-2">Reason: ${p.status.substring(p.status.indexOf(':') + 1).trim()}</p>`;
+                        resubmitButton = `<button onclick="resubmitExpenditureProof('${p.id}')" class="mt-3 w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors font-semibold">Resubmit Proof</button>`;
+                        // If rejected, allow editing for resubmission (form inputs remain open)
+                    } else if (p.status === 'Pending Verification') {
+                         fieldsDisabled = true; // Still pending, so cannot resubmit yet
+                    }
+
+                    const proofCard = document.createElement('div');
+                    proofCard.className = 'p-4 border border-gray-300 rounded-lg shadow-sm bg-white';
+                    proofCard.innerHTML = `
+                        <div class="flex justify-between items-start">
+                            <h4 class="text-lg font-bold text-gray-800">${p.description} - ₹${p.amount.toLocaleString('en-IN')}</h4>
+                            <span class="px-3 py-1 text-sm font-semibold rounded-full ${statusClass}">${statusText}</span>
+                        </div>
+                        <p class="text-sm text-gray-600 mt-1">Submitted on: ${p.date}</p>
+                        ${rejectionDetails}
+                        <div class="mt-4 text-sm space-y-1">
+                            <a href="${p.billUrl}" target="_blank" class="text-blue-500 hover:text-blue-700 font-semibold block">View Bill/Receipt</a>
+                            <a href="${p.photoUrl}" target="_blank" class="text-blue-500 hover:text-blue-700 font-semibold block">View Photo Proof</a>
+                        </div>
+                        ${resubmitButton}
+                    `;
+                    proofsContainer.appendChild(proofCard);
+                 });
+            } else {
+                emptyMessage.classList.remove('hidden');
+            }
+
+
+            // 3. Populate Donation History Table (Existing Logic)
+            const tableBody = document.getElementById('foundationDonationHistoryTableBody');
+            tableBody.innerHTML = '';
+
+            if (foundationDonations.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="4" class="text-center py-4 text-gray-500">No donations received for this foundation yet.</td></tr>';
+                return;
+            }
+
+            foundationDonations.forEach(d => {
+                const donorName = d.isAnonymous ? 'Anonymous Donor' : d.donorName;
+                const donorStatus = d.isAnonymous ? 'Anonymous' : 'Public';
+
+                const row = tableBody.insertRow();
+                row.innerHTML = `
+                    <td class="px-4 py-3">${d.date}</td>
+                    <td class="px-4 py-3 font-semibold ${d.isAnonymous ? 'text-red-500' : 'text-gray-800'}">${donorName}</td>
+                    <td class="px-4 py-3 text-green-600">₹${d.amount.toLocaleString('en-IN')}</td>
+                    <td class="px-4 py-3">${donorStatus}</td>
+                `;
+            });
+        }
+
+        // NEW: Resubmit Proof Logic
+        function resubmitExpenditureProof(id) {
+            const proof = expenditureProofs.find(p => p.id === id);
+            if (!proof || !proof.status.startsWith('Rejected')) {
+                alert('Error: This proof is not available for resubmission.');
+                return;
+            }
+
+            // Populate form fields for easy editing
+            document.getElementById('expenditureDescription').value = proof.description;
+            document.getElementById('expenditureAmount').value = proof.amount;
+            document.getElementById('expenditureBillUrl').value = proof.billUrl;
+            document.getElementById('expenditurePhotoUrl').value = proof.photoUrl;
+
+            // Store the ID of the proof being resubmitted
+            document.getElementById('expenditureProofForm').dataset.resubmittingId = id;
+            
+            alert(`Proof ID ${id} loaded for resubmission. Please edit and click 'Submit Proof for Admin Verification'.`);
+            document.getElementById('expenditureProofForm').scrollIntoView({ behavior: 'smooth' });
+        }
+
+
+        // MODIFIED: Foundation Expenditure Proof Upload Logic (handles initial submission AND resubmission)
+        function handleExpenditureProofUpload(event) {
+            event.preventDefault();
+
+            if (currentUserType !== 'foundation' || !currentUser) {
+                alert('Error: Not logged in as a foundation.');
+                return;
+            }
+
+            const form = document.getElementById('expenditureProofForm');
+            const resubmittingId = form.dataset.resubmittingId;
+
+            const description = document.getElementById('expenditureDescription').value;
+            const amount = parseInt(document.getElementById('expenditureAmount').value);
+            const billUrl = document.getElementById('expenditureBillUrl').value;
+            const photoUrl = document.getElementById('expenditurePhotoUrl').value;
+
+            let proofMessage;
+            
+            if (resubmittingId) {
+                // Logic for Resubmission
+                const proofIndex = expenditureProofs.findIndex(p => p.id === resubmittingId);
+                if (proofIndex !== -1) {
+                    expenditureProofs[proofIndex].description = description;
+                    expenditureProofs[proofIndex].amount = amount;
+                    expenditureProofs[proofIndex].billUrl = billUrl;
+                    expenditureProofs[proofIndex].photoUrl = photoUrl;
+                    expenditureProofs[proofIndex].date = new Date().toISOString().split('T')[0];
+                    expenditureProofs[proofIndex].status = 'Pending Verification'; // Status resets on resubmission
+                    proofMessage = 'Expenditure proof resubmitted successfully! Waiting for Admin Verification.';
+                }
+                delete form.dataset.resubmittingId; // Clear the resubmission ID
+            } else {
+                // Logic for Initial Submission
+                const newProof = {
+                    id: 'EXP-' + Math.random().toString(36).substr(2, 7).toUpperCase(),
+                    foundationName: currentUser.name,
+                    foundationId: currentUser.id,
+                    district: currentUser.district,
+                    description: description,
+                    amount: amount,
+                    billUrl: billUrl,
+                    photoUrl: photoUrl,
+                    date: new Date().toISOString().split('T')[0],
+                    status: 'Pending Verification'
+                };
+                expenditureProofs.push(newProof);
+                proofMessage = 'Expenditure proof submitted successfully! Waiting for Admin Verification.';
+            }
+
+            localStorage.setItem('donariumExpenditureProofs', JSON.stringify(expenditureProofs));
+
+            document.getElementById('expenditureProofForm').reset();
+            updateFoundationDashboard(); // Refresh to show updated/new status
+            alert(proofMessage);
+        }
+
+        // Admin Function updates
+        function updateAdminDashboard() {
+            document.getElementById('totalDonors').textContent = users.length;
+            const totalDonated = donations.reduce((sum, d) => sum + d.amount, 0);
+            document.getElementById('totalDonations').textContent = `₹${totalDonated.toLocaleString('en-IN')}`;
+            document.getElementById('totalFoundations').textContent = Object.keys(foundationsCredentials).length;
+            document.getElementById('totalTransactions').textContent = donations.length;
+        }
+
+        function updateUsersTable() {
+            const tableBody = document.getElementById('usersTableBody');
+            tableBody.innerHTML = '';
+
+            users.forEach(user => {
+                const row = tableBody.insertRow();
+                const donated = `₹${user.totalDonated.toLocaleString('en-IN')}`;
+                
+                // NEW: Hide personal data for anonymous users from Admin
+                const displayName = user.isAnonymous ? 'Anonymous Donor' : user.name;
+                const displayEmail = user.isAnonymous ? 'N/A' : user.email;
+                const displayPhone = user.isAnonymous ? 'N/A' : user.phone;
+                const isAnonymousStatus = user.isAnonymous ? 'Yes' : 'No';
+
+
+                row.innerHTML = `
+                    <td class="px-4 py-3 font-semibold ${user.isAnonymous ? 'text-red-500' : 'text-gray-800'}">${displayName}</td>
+                    <td class="px-4 py-3">${displayEmail}</td>
+                    <td class="px-4 py-3">${displayPhone}</td>
+                    <td class="px-4 py-3">${isAnonymousStatus}</td>
+                    <td class="px-4 py-3">${user.registrationDate}</td>
+                    <td class="px-4 py-3">${user.initialPaymentId}</td>
+                    <td class="px-4 py-3">${user.initialPaymentTime}</td>
+                    <td class="px-4 py-3 text-green-600">${donated}</td>
+                `;
+            });
+        }
+
+        function updateTransactionsTable() {
+            const tableBody = document.getElementById('transactionsTableBody');
+            tableBody.innerHTML = '';
+            const allDonations = [...donations].reverse();
+
+            allDonations.forEach(d => {
+                const donor = users.find(u => u.id === d.donorId);
+                // Hide donor name for anonymous donations
+                const donorName = d.isAnonymous ? 'Anonymous Donor' : d.donorName;
+                
+                const row = tableBody.insertRow();
+                row.innerHTML = `
+                    <td class="px-4 py-3">${d.date}</td>
+                    <td class="px-4 py-3 font-semibold ${d.isAnonymous ? 'text-red-500' : 'text-gray-800'}">${donorName}</td>
+                    <td class="px-4 py-3">${d.foundation}</td>
+                    <td class="px-4 py-3 text-green-600">₹${d.amount.toLocaleString('en-IN')}</td>
+                    <td class="px-4 py-3">${d.type}</td>
+                `;
+            });
+        }
+
+        function updateFoundationsList() {
+            const listContainer = document.getElementById('foundationsList');
+            listContainer.innerHTML = '';
+
+            Object.values(foundationsCredentials).forEach(foundation => {
+                const donationsCount = donations.filter(d => d.foundation === foundation.name).length;
+                const totalAmount = donations.filter(d => d.foundation === foundation.name).reduce((sum, d) => sum + d.amount, 0);
+
+                const card = document.createElement('div');
+                card.className = 'bg-white p-4 rounded-lg shadow border border-gray-200';
+                card.innerHTML = `
+                    <h4 class="text-lg font-bold text-green-700 mb-2">${foundation.name}</h4>
+                    <p class="text-sm text-gray-600"><strong>District:</strong> ${foundation.district}</p>
+                    <p class="text-sm text-gray-600"><strong>Email:</strong> ${foundation.email}</p>
+                    <p class="text-sm mt-2"><strong>Total Donations:</strong> <span class="font-semibold text-blue-600">${donationsCount}</span></p>
+                    <p class="text-sm"><strong>Total Amount:</strong> <span class="font-semibold text-green-600">₹${totalAmount.toLocaleString('en-IN')}</span></p>
+                `;
+                listContainer.appendChild(card);
+            });
+        }
+
+        // NEW: Expenditure Proofs Functions for Admin Tab
+        function updateFoundationsForExpenditure() {
+            const districtFilter = document.getElementById('expenditureDistrictFilter');
+            const foundationFilter = document.getElementById('expenditureFoundationFilter');
+            const selectedDistrict = districtFilter.value;
+
+            foundationFilter.innerHTML = '<option value="">All Foundations in District...</option>';
+            foundationFilter.disabled = true;
+
+            if (selectedDistrict) {
+                foundationFilter.disabled = false;
+                const foundations = foundationsData[selectedDistrict] || [];
+                foundations.forEach(foundation => {
+                    const option = document.createElement('option');
+                    option.value = foundation.name;
+                    option.textContent = foundation.name;
+                    foundationFilter.appendChild(option);
+                });
+            }
+            filterExpenditureProofs(); // Re-filter when district changes
+        }
+
+        function filterExpenditureProofs() {
+            const districtFilter = document.getElementById('expenditureDistrictFilter').value;
+            const foundationFilter = document.getElementById('expenditureFoundationFilter').value;
+            const tableBody = document.getElementById('expenditureProofsTableBody');
+            const emptyMessage = document.getElementById('expenditureProofsEmptyMessage');
+            const tableWrapper = document.getElementById('expenditureProofsTableWrapper');
+            tableBody.innerHTML = '';
+
+            let filteredProofs = [...expenditureProofs].reverse(); // Show newest first
+
+            if (districtFilter) {
+                filteredProofs = filteredProofs.filter(p => p.district === districtFilter);
+            }
+            if (foundationFilter) {
+                filteredProofs = filteredProofs.filter(p => p.foundationName === foundationFilter);
+            }
+
+            if (filteredProofs.length === 0) {
+                emptyMessage.classList.remove('hidden');
+                tableWrapper.classList.add('hidden');
+                return;
+            }
+
+            emptyMessage.classList.add('hidden');
+            tableWrapper.classList.remove('hidden');
+
+            filteredProofs.forEach(proof => {
+                const row = tableBody.insertRow();
+                let statusClass = 'text-gray-600';
+                let actions = `
+                    <button onclick="approveExpenditureProof('${proof.id}')" class="bg-green-500 text-white px-3 py-1 rounded text-xs hover:bg-green-600 mr-1">Approve</button>
+                    <button onclick="rejectExpenditureProof('${proof.id}')" class="bg-red-500 text-white px-3 py-1 rounded text-xs hover:bg-red-600">Reject</button>
+                `;
+                
+                let statusDisplay = proof.status;
+
+                if (proof.status === 'Approved') {
+                    statusClass = 'text-green-600 font-bold';
+                    actions = `<span class="text-green-500 font-semibold text-xs">Verified</span>`;
+                }
+                // MODIFIED: Display rejection reason in admin table
+                if (proof.status.startsWith('Rejected')) {
+                    statusClass = 'text-red-600 font-bold';
+                    // Extract only the status text for the action column
+                    statusDisplay = proof.status.substring(0, proof.status.indexOf(':')).trim();
+                    const rejectionReason = proof.status.substring(proof.status.indexOf(':') + 1).trim();
+                    actions = `<span class="text-red-500 font-semibold text-xs">Review Required</span><br><span class="text-xs text-gray-500 italic">${rejectionReason}</span>`;
+                }
+
+                row.innerHTML = `
+                    <td class="px-4 py-3">${proof.foundationName}</td>
+                    <td class="px-4 py-3">${proof.description}</td>
+                    <td class="px-4 py-3 text-orange-600">₹${proof.amount.toLocaleString('en-IN')}</td>
+                    <td class="px-4 py-3">${proof.date}</td>
+                    <td class="px-4 py-3 text-sm">
+                        <a href="${proof.billUrl}" target="_blank" class="text-blue-500 hover:text-blue-700 font-semibold block">Bill/Receipt</a>
+                        <a href="${proof.photoUrl}" target="_blank" class="text-blue-500 hover:text-blue-700 font-semibold block">Photo Proof</a>
+                    </td>
+                    <td class="px-4 py-3 ${statusClass}">${statusDisplay}</td>
+                    <td class="px-4 py-3">${actions}</td>
+                `;
+            });
+        }
+
+        function approveExpenditureProof(id) {
+            const proofIndex = expenditureProofs.findIndex(p => p.id === id);
+            if (proofIndex !== -1) {
+                expenditureProofs[proofIndex].status = 'Approved';
+                localStorage.setItem('donariumExpenditureProofs', JSON.stringify(expenditureProofs));
+                filterExpenditureProofs();
+                alert('Expenditure proof approved successfully!');
+            }
+        }
+
+        // MODIFIED: Function to capture rejection reason
+        function rejectExpenditureProof(id) {
+            const proofIndex = expenditureProofs.findIndex(p => p.id === id);
+            if (proofIndex !== -1) {
+                // The prompt is the interface for the admin to enter the reason
+                const reason = prompt('Enter a detailed reason for rejecting the expenditure proof (This will be visible to the foundation):');
+                if (reason) {
+                    // Prepend the status and append the reason
+                    expenditureProofs[proofIndex].status = `Rejected: ${reason.trim()}`;
+                    localStorage.setItem('donariumExpenditureProofs', JSON.stringify(expenditureProofs));
+                    filterExpenditureProofs();
+                    alert('Expenditure proof rejected successfully!');
+                } else {
+                    alert('Rejection canceled. A reason is required.');
+                }
+            }
+        }
+
+        function logout() {
+            currentUser = null;
+            currentUserType = null;
+            showSection('home');
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeFoundationData(); // NEW: Initialize 39 foundation credentials
+            showSection('home');
+            populateDistrictFilter('donationDistrict');
+            populateDistrictFilter('expenditureDistrictFilter');
+            updateFoundationsForExpenditure(); // Initialize filters on admin expenditure tab
+        });
+    </script>
+</body>
+</html>
